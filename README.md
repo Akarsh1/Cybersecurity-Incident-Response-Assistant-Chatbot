@@ -1,24 +1,23 @@
 # Cybersecurity-Incident-Response-Assistant-Chatbot
 This is an implementation of the project on Enterprise Cybersecurity Incident Response Assistant Chatbot.
 
-## Objective: A Hybrid Search RAG-based Cyber Threat Investigation Assistant that retrieves relevant security documents and generates grounded responses.
+## Objective: 
+A Hybrid Search RAG-based Cyber Threat Investigation Assistant that retrieves relevant security documents and generates grounded responses.
 
 ## Architecture:
 
-User Query
-   ↓
-Data Preprocessing(Semantic Chunking via segmenting main, affected and description sections, text cleaning such as normalizing white spaces)
-   ↓
-Hybrid Retrieval Layer
-   ├── BM25 (Lexical Search)
-   ├── Dense Vector Search (Embeddings)
-   └── Score Fusion (Reciprocal Rank Fusion)
-   ↓
-Top-K Relevant Context(Generated via combination of exact ID matching and hybrid search mechanism)
-   ↓
-RAG Generator (HuggingFace LLM)
-   ↓
-Grounded Response (Generated Answer)
+```mermaid
+flowchart TD;
+    A[User Query] --> B[Data Preprocessing]
+    B --> |Semantic Chunking via segmenting main, affected and description sections; Text Cleaning such as normalizing white spaces| C[Hybrid Retrieval Layer]
+    C --> |Lexical Search| D[BM25]
+    C -->|Embeddings| E[Dense Vector Search]
+    D-->|Reciprocal Rank Fusion| F[Score Fusion]
+    E-->|Reciprocal Rank Fusion| F[Score Fusion]
+    F-->|Generated via combination of exact ID matching and hybrid search mechanism| G[Top- K Relevant Context]
+    G-->|Hugging Face LLM| H[RAG Generator]
+    H-->|Generated Answer| I[Grounded Response]
+```
 
 ## Evaluation:
 1. Retrieval Evaulation: Precision@k, Recall@k and Hit@top_k.
