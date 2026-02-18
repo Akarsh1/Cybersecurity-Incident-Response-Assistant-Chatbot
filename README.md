@@ -14,7 +14,7 @@ flowchart TD;
     C -->|Embeddings| E[Dense Vector Search]
     D-->|Reciprocal Rank Fusion| F[Score Fusion]
     E-->|Reciprocal Rank Fusion| F[Score Fusion]
-    F-->|Generated via combination of exact ID matching and hybrid search mechanism| G[Top- K Relevant Context]
+    F-->|Generated via combination of exact ID matching and hybrid search mechanism| G[Top-K Relevant Context]
     G-->|Hugging Face LLM| H[RAG Generator]
     H-->|Generated Answer| I[Grounded Response]
 ```
